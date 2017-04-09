@@ -30,15 +30,11 @@ public class clienteUDP {
 
 	public void setPuertoServidor(int puertoServidor) throws Exception {
 			this.puertoServidor = puertoServidor;
-			establecerConexion();
 	}
 
 	public void establecerConexion() throws Exception{
-		if(socketCliente!=null)
-		{
-			socketCliente.close();
-		}
-		socketCliente = new DatagramSocket(puertoServidor);
+	
+		socketCliente = new DatagramSocket(9876);
 	}
 
 	public void enviarPaquetes() throws Exception{
@@ -49,11 +45,10 @@ public class clienteUDP {
 			ObjectOutputStream o = new ObjectOutputStream(b);
 			o.writeObject(aEnviar);
 			sendData = b.toByteArray();
-			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipServidor, 9876);
+			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipServidor, puertoServidor);
 			socketCliente.send(sendPacket);
 			System.out.println("objeto "+ aEnviar.getNumeroSecuencia()+" enviado a las "+aEnviar.getMarcaTiempo());
 		}
-		socketCliente.close();
 	}
 
 
