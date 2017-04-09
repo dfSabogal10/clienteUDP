@@ -1,0 +1,11 @@
+		//TestServer
+		byte[] receiveData = new byte[1024];
+		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+		socketCliente.receive(receivePacket);
+		ByteArrayInputStream bin = new ByteArrayInputStream(receivePacket.getData());
+		ObjectInputStream oin = new ObjectInputStream(bin);
+		ObjetoUDP recibido=(ObjetoUDP) oin.readObject();
+
+
+		System.out.println("FROM SERVER: Objeto" + recibido.getNumeroSecuencia());
+		socketCliente.close();
