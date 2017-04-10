@@ -51,6 +51,11 @@ public class clienteUDP {
 		}
 	}
 
+	public void enviarArchivo(File archivoAEnviar) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 

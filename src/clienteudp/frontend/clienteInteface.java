@@ -100,11 +100,22 @@ public class clienteInteface extends JFrame {
 		btnEnviar = new JButton("Enviar");
 		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
 				try{
 					backend.setIpServidor(InetAddress.getByName(txtIPServidor.getText()));
 					backend.setPuertoServidor(Integer.parseInt(txtPuertoServidor.getText()));
-					backend.setNumObjetosAEnviar(Integer.parseInt(txtNumObjetos.getText()));
-					backend.enviarPaquetes();
+					if(rdbtnPermitirEnvioArchivos.isSelected())
+					{
+						if(archivoAEnviar!=null)
+						{
+							backend.enviarArchivo(archivoAEnviar);
+						}
+					}
+					else
+					{
+						backend.setNumObjetosAEnviar(Integer.parseInt(txtNumObjetos.getText()));
+						backend.enviarPaquetes();
+					}
 				}
 				catch (Exception e) {
 					e.printStackTrace();
@@ -154,7 +165,7 @@ public class clienteInteface extends JFrame {
 		});
 		rdbtnPermitirEnvioArchivos.setBounds(33, 61, 217, 23);
 		contentPane.add(rdbtnPermitirEnvioArchivos);
-		
+
 		lblArchivoCargado = new JLabel("Archivo cargado:");
 		lblArchivoCargado.setBounds(36, 190, 368, 15);
 		contentPane.add(lblArchivoCargado);
