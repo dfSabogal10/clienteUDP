@@ -40,14 +40,14 @@ public class clienteUDP {
 	public void enviarPaquetes() throws Exception{
 		for (int i = 0; i < numObjetosAEnviar; i++) {
 			byte[] sendData = new byte[1024];
-			ObjetoUDP aEnviar=new ObjetoUDP(i+1,new Date());
+			ObjetoUDP aEnviar=new ObjetoUDP(i+1,new Date(),numObjetosAEnviar);
 			ByteArrayOutputStream b = new ByteArrayOutputStream();
 			ObjectOutputStream o = new ObjectOutputStream(b);
 			o.writeObject(aEnviar);
 			sendData = b.toByteArray();
 			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipServidor, puertoServidor);
 			socketCliente.send(sendPacket);
-			System.out.println("objeto "+ aEnviar.getNumeroSecuencia()+" enviado a las "+aEnviar.getMarcaTiempo());
+			System.out.println("objeto "+ aEnviar.getNumeroSecuencia()+" de "+aEnviar.getNumeroTotal() +" enviado a las "+aEnviar.getMarcaTiempo());
 		}
 	}
 

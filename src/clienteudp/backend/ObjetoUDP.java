@@ -10,10 +10,20 @@ public class ObjetoUDP implements Serializable{
 
 	private int numeroSecuencia;
 	private Date marcaTiempo;
+	private int numeroTotal;
 
-	public ObjetoUDP(int numSec,Date marcaTmp){
+	public ObjetoUDP(int numSec,Date marcaTmp, int numTotal){
 		numeroSecuencia=numSec;
 		marcaTiempo=marcaTmp;
+		numeroTotal=numTotal;
+	}
+
+	public int getNumeroTotal() {
+		return numeroTotal;
+	}
+
+	public void setNumeroTotal(int numeroTotal) {
+		this.numeroTotal = numeroTotal;
 	}
 
 	public int getNumeroSecuencia() {
