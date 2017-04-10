@@ -53,7 +53,7 @@ public class clienteUDP {
 
 	public void enviarArchivo(File archivoAEnviar) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("envio archivo");
 	}
 
 
