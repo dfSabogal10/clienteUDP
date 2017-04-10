@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ObjetoUDP implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
 
 	private int numeroSecuencia;
 	private Date marcaTiempo;
